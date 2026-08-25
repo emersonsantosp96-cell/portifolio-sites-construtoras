@@ -1,0 +1,27 @@
+# Dependências
+node_modules/
+
+# Arquivos de ambiente
+.env
+.env.local
+.env.*.local
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Pastas de build
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/
+*.swp
+*.swo
+
+# Configurações locais do agente (não precisam ir ao repo)
+.agents/

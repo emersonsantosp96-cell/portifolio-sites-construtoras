@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Apex Arc - Construtora de Casas de Alto Padrão e Ambientes Exclusivos</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#19191d",
+                        "on-primary": "#ffffff",
+                        "surface": "#fdfdfd",
+                        "surface-container": "#f4f4f5",
+                        "surface-container-high": "#eaeaea",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#18181b",
+                        "on-surface-variant": "#52525b",
+                        "outline-variant": "#e4e4e7"
+                    },
+                    fontFamily: {
+                        sans: ["Manrope", "sans-serif"],
+                        headline: ["Manrope", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --site-bg: #fbfbfc;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--site-bg);
+        }
+        .soft-shadow {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+        }
+        .dark-card-shadow {
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.25);
+        }
+
+        /* --- Scroll Reveal Animations Engine --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.94) translateY(30px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .revealed {
+            opacity: 1 !important;
+            transform: translateY(0) scale(1) !important;
+        }
+        
+        /* Stagger Delays */
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+        .delay-400 { transition-delay: 0.4s; }
+    </style>
+</head>
+<body class="text-on-surface antialiased overflow-x-hidden" style="background-color: var(--site-bg);">
+
+<!-- Header & Navigation -->
+<header class="w-full pt-6 pb-3 px-4 sm:px-8 lg:px-12 sticky top-0 z-50 backdrop-blur-md border-b border-neutral-200/50 transition-all" style="background-color: rgba(251, 251, 252, 0.92);">
+    <nav class="max-w-[1360px] mx-auto flex items-center justify-between">
+        <!-- Brand Logo -->
+        <a href="#" class="font-headline text-2xl lg:text-3xl font-bold tracking-tight text-neutral-900 flex items-center gap-2">
+            Apex Arc
+        </a>
+
+        <!-- Desktop Navigation Links (Portuguese Copy) -->
+        <div class="hidden md:flex items-center space-x-8 lg:space-x-12">
+            <a href="#sobre" class="text-neutral-700 hover:text-black text-sm font-medium transition-colors">Sobre Nós</a>
+            <a href="#diferenciais" class="text-neutral-700 hover:text-black text-sm font-medium transition-colors">Diferenciais</a>
+            <a href="#portfolio" class="text-neutral-700 hover:text-black text-sm font-medium transition-colors">Portfólio</a>
+            <a href="#contato" class="text-neutral-700 hover:text-black text-sm font-medium transition-colors">Contato</a>
+        </div>
+
+        <!-- Call to Action Button on Nav -->
+        <div class="hidden md:block">
+            <a href="#contato" class="inline-flex items-center gap-2 bg-neutral-900 hover:bg-black text-white text-xs font-semibold px-5 py-2.5 rounded-full transition-all duration-200 shadow-sm">
+                Fale Conosco
+                <span class="material-symbols-outlined text-[15px]">arrow_outward</span>
+            </a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="md:hidden text-neutral-900 p-2 focus:outline-none" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Abrir menu">
+            <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+    </nav>
+
+    <!-- Mobile Nav Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden pt-4 pb-2 border-t border-neutral-100 mt-3 flex flex-col space-y-3">
+        <a href="#sobre" class="text-neutral-800 text-sm font-medium px-2 py-1">Sobre Nós</a>
+        <a href="#diferenciais" class="text-neutral-800 text-sm font-medium px-2 py-1">Diferenciais</a>
+        <a href="#portfolio" class="text-neutral-800 text-sm font-medium px-2 py-1">Portfólio</a>
+        <a href="#contato" class="text-neutral-800 text-sm font-medium px-2 py-1">Contato</a>
+    </div>
+</header>
+
+<!-- Main Hero Section (Com Recorte Curvo / Notch Perfeitamente Integrado ao Fundo) -->
+<section class="w-full px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto mt-2">
+    <!-- Hero Rounded Banner Card -->
+    <div class="relative w-full rounded-[28px] sm:rounded-[36px] lg:rounded-[44px] overflow-hidden min-h-[540px] sm:min-h-[600px] lg:min-h-[680px] flex flex-col justify-between p-6 sm:p-12 lg:p-16 pb-28 sm:pb-32 lg:pb-36 bg-neutral-950">
+        <!-- Background Image of Luxury Villa at Dusk -->
+        <img 
+            src="assets/hero-apex-villa.jpg" 
+            alt="Vila Arquitetônica Contemporânea ao Entardecer - Apex Arc Construtora" 
+            class="absolute inset-0 w-full h-full object-cover object-center z-0 scale-[1.01] transition-transform duration-1000 ease-out"
+        />
+        
+        <!-- Multi-layer Gradients for Maximum Contrast and Depth -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+
+        <!-- Hero Text Content (Portuguese Copy) -->
+        <div class="relative z-20 max-w-xl lg:max-w-2xl pt-4 sm:pt-6">
+            <h1 class="text-white text-3xl sm:text-5xl lg:text-[58px] font-bold tracking-tight leading-[1.12] mb-5 sm:mb-6 font-headline">
+                Projetando Espaços<br>Que Inspiram &amp; Perduram
+            </h1>
+            <p class="text-white/85 text-sm sm:text-base lg:text-[17px] font-normal leading-relaxed max-w-lg mb-4">
+                Transformamos visões em residências e ambientes de alto padrão, combinando arquitetura inovadora, sustentabilidade e rigor técnico impecável.
+            </p>
+        </div>
+
+        <!-- RECORTE CURVO / NOTCH INVERTIDO COM A COR EXATA DO FUNDO DO SITE -->
+        <div class="absolute bottom-0 left-0 z-30 pt-3.5 pr-4 sm:pt-4 sm:pr-5 rounded-tr-[32px] sm:rounded-tr-[40px] flex items-center" style="background-color: var(--site-bg);">
+            <!-- Botão Pill Escuro -->
+            <a 
+                href="#contato" 
+                class="inline-flex items-center justify-center bg-[#19191d] hover:bg-black text-white px-8 sm:px-10 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-semibold tracking-wide border border-neutral-800 shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+            >
+                Agendar Consultoria Gratuita
+            </a>
+
+            <!-- Curva Invertida Superior (Transição contínua com a cor exata do fundo) -->
+            <svg class="absolute -top-8 left-0 w-8 h-8 pointer-events-none block" viewBox="0 0 32 32" style="color: var(--site-bg); fill: currentColor;">
+                <path d="M0,0 A32,32 0 0,0 32,32 L0,32 Z"/>
+            </svg>
+
+            <!-- Curva Invertida Direita (Transição contínua com a cor exata do fundo) -->
+            <svg class="absolute bottom-0 -right-8 w-8 h-8 pointer-events-none block" viewBox="0 0 32 32" style="color: var(--site-bg); fill: currentColor;">
+                <path d="M0,0 A32,32 0 0,0 32,32 L0,32 Z"/>
+            </svg>
+        </div>
+    </div>
+</section>
+
+<!-- About Company & Key Metrics Grid (Sobre a Empresa) -->
+<section id="sobre" class="w-full px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto py-16 sm:py-24">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <!-- Left: Sobre a Construtora & Selos de Qualidade -->
+        <div class="lg:col-span-5 flex flex-col justify-between reveal">
+            <div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-neutral-900 mb-4 tracking-tight">
+                    Sobre a Apex Arc
+                </h2>
+                <p class="text-neutral-600 text-sm sm:text-base leading-relaxed mb-10 max-w-md">
+                    Na Apex Arc, acreditamos que construir vai além de erguer estruturas; trata-se de conceber ambientes e refúgios exclusivos que elevam a qualidade de vida e expressam a sua personalidade com sofisticação.
+                </p>
+            </div>
+
+            <!-- Selos / Logos de Referência e Parceiros -->
+            <div class="flex items-center gap-8 text-neutral-400 grayscale opacity-80 pt-2">
+                <!-- Selo 1 -->
+                <div class="flex items-center gap-1.5 font-bold tracking-tighter text-base sm:text-lg text-neutral-700">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L4 6v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V6l-8-4zm0 2.18l6 3v4.82c0 4.52-3.13 8.74-6 9.88-2.87-1.14-6-5.36-6-9.88V7.18l6-3z"/>
+                    </svg>
+                    <span>LEED Gold</span>
+                </div>
+                <!-- Selo 2 -->
+                <div class="font-semibold text-sm sm:text-base text-neutral-700 tracking-tight flex items-center gap-1">
+                    <span class="w-3.5 h-3.5 rounded-full border-2 border-neutral-700"></span>
+                    <span>PBQP-H A</span>
+                </div>
+                <!-- Selo 3 -->
+                <div class="font-bold text-sm sm:text-base tracking-widest text-neutral-700 flex items-center gap-1">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                        <polygon points="12 2 2 22 22 22"/>
+                    </svg>
+                    <span>GBC Brasil</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: 2x2 Grid de Métricas de Autoridade -->
+        <div class="lg:col-span-7 grid grid-cols-2 gap-y-10 gap-x-8 sm:gap-x-12 border-t lg:border-t-0 lg:border-l border-neutral-200/80 pt-8 lg:pt-0 lg:pl-16">
+            <!-- Stat 1 -->
+            <div class="reveal delay-100">
+                <div class="text-3xl sm:text-4xl lg:text-[44px] font-bold text-neutral-900 tracking-tight mb-2">
+                    25+
+                </div>
+                <p class="text-xs sm:text-sm text-neutral-500 font-medium leading-snug">
+                    Anos de Excelência em<br class="hidden sm:inline"> Arquitetura &amp; Construção
+                </p>
+            </div>
+
+            <!-- Stat 2 -->
+            <div class="reveal delay-200">
+                <div class="text-3xl sm:text-4xl lg:text-[44px] font-bold text-neutral-900 tracking-tight mb-2">
+                    500+
+                </div>
+                <p class="text-xs sm:text-sm text-neutral-500 font-medium leading-snug">
+                    Casas &amp; Ambientes<br class="hidden sm:inline"> Entregues com Sucesso
+                </p>
+            </div>
+
+            <!-- Stat 3 -->
+            <div class="reveal delay-300">
+                <div class="text-3xl sm:text-4xl lg:text-[44px] font-bold text-neutral-900 tracking-tight mb-2">
+                    98%
+                </div>
+                <p class="text-xs sm:text-sm text-neutral-500 font-medium leading-snug">
+                    Taxa de Satisfação e<br class="hidden sm:inline"> Recomendação de Clientes
+                </p>
+            </div>
+
+            <!-- Stat 4 -->
+            <div class="reveal delay-400">
+                <div class="text-3xl sm:text-4xl lg:text-[44px] font-bold text-neutral-900 tracking-tight mb-2">
+                    15+
+                </div>
+                <p class="text-xs sm:text-sm text-neutral-500 font-medium leading-snug">
+                    Cidades &amp; Condomínios<br class="hidden sm:inline"> com Nossas Obras
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Diferenciais Construtivos Section (QUADROS BRANCOS COM ÍCONES PRETOS) -->
+<section id="diferenciais" class="py-16 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto">
+    <div class="mb-10 reveal">
+        <p class="text-xs uppercase tracking-widest text-neutral-400 font-semibold mb-2">Por que construir conosco</p>
+        <h2 class="text-2xl sm:text-4xl font-bold text-neutral-900 tracking-tight">Diferenciais que definem nossa excelência</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Card 1 -->
+        <div class="bg-white text-neutral-900 p-8 sm:p-9 rounded-[28px] border border-neutral-200/90 soft-shadow flex flex-col justify-between gap-6 transform transition duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-neutral-300 group reveal delay-100">
+            <div class="w-14 h-14 bg-black text-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                <span class="material-symbols-outlined text-[26px]">workspace_premium</span>
+            </div>
+            <div>
+                <h3 class="text-lg sm:text-xl font-bold text-neutral-900 leading-tight mb-2.5">Padrão Construtivo Superior</h3>
+                <p class="text-sm text-neutral-600 leading-relaxed">Materiais nobres e tecnologias construtivas certificadas para máxima durabilidade e valorização do imóvel.</p>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white text-neutral-900 p-8 sm:p-9 rounded-[28px] border border-neutral-200/90 soft-shadow flex flex-col justify-between gap-6 transform transition duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-neutral-300 group reveal delay-200">
+            <div class="w-14 h-14 bg-black text-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                <span class="material-symbols-outlined text-[26px]">architecture</span>
+            </div>
+            <div>
+                <h3 class="text-lg sm:text-xl font-bold text-neutral-900 leading-tight mb-2.5">Projetos Sob Medida</h3>
+                <p class="text-sm text-neutral-600 leading-relaxed">Arquitetura autoral e bioclimática pensada milimetricamente para o seu terreno, insolação e estilo de vida.</p>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white text-neutral-900 p-8 sm:p-9 rounded-[28px] border border-neutral-200/90 soft-shadow flex flex-col justify-between gap-6 transform transition duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-neutral-300 group reveal delay-300">
+            <div class="w-14 h-14 bg-black text-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                <span class="material-symbols-outlined text-[26px]">event_available</span>
+            </div>
+            <div>
+                <h3 class="text-lg sm:text-xl font-bold text-neutral-900 leading-tight mb-2.5">Rigor Absoluto nos Prazos</h3>
+                <p class="text-sm text-neutral-600 leading-relaxed">Planejamento transparente com relatórios periódicos de evolução e compromisso contratual de entrega pontual.</p>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bg-white text-neutral-900 p-8 sm:p-9 rounded-[28px] border border-neutral-200/90 soft-shadow flex flex-col justify-between gap-6 transform transition duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-neutral-300 group reveal delay-400">
+            <div class="w-14 h-14 bg-black text-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                <span class="material-symbols-outlined text-[26px]">verified_user</span>
+            </div>
+            <div>
+                <h3 class="text-lg sm:text-xl font-bold text-neutral-900 leading-tight mb-2.5">Garantia Estrutural de 10 Anos</h3>
+                <p class="text-sm text-neutral-600 leading-relaxed">Suporte pós-obra completo e assistência técnica especializada para a total tranquilidade da sua família.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Nossos Projetos Section (COM ANIMAÇÃO DE SCROLL STAGGERED & HOVER PREMIUM) -->
+<section id="portfolio" class="py-20 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4 reveal">
+        <div>
+            <p class="text-xs uppercase tracking-widest text-neutral-400 font-semibold mb-2">Excelência em Execução</p>
+            <h2 class="text-2xl sm:text-4xl font-bold text-neutral-900 tracking-tight">Nosso Portfólio de Obras Exclusivas</h2>
+        </div>
+        <a class="hidden md:flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-neutral-700 hover:text-black transition-colors" href="#contato">
+            Conhecer Todos os Projetos
+            <span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+        </a>
+    </div>
+
+    <!-- Grid de Projetos com Animação de Revelação ao Rolar -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Projeto 1 (Com Staggered Scroll Animation) -->
+        <div class="group cursor-pointer reveal-scale delay-100">
+            <div class="relative w-full h-[340px] sm:h-80 rounded-[28px] overflow-hidden mb-4 shadow-md bg-neutral-900">
+                <img 
+                    class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108" 
+                    alt="Casa Reserva da Mata - Condomínio Fechado" 
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcWuiT-Shom28xOEmMQwi5k7-QnJXDIGDXOEFlMN4GLYphVEbQmv9kuDKHEHYWAqrq6PJQ0H9j67RKrrRYyIDGRvwvE-9KXTnzLzgaJLf7BHk4c-GugDusEfy_ukoml5AEpTt5h5n6ns8MAFWgMtS2JLj60hp8DZUwBfwhdBpNDt7dnyW936mei8Uc7Ly-u7YbSlwXDIDFVRklS7fgrxmPqSRXB6LgWINgQSXw-5A6EWqcu5djH-VNKg"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] font-bold text-neutral-900 shadow-md">
+                    290 m²
+                </div>
+            </div>
+            <div class="flex justify-between items-start pt-1">
+                <div>
+                    <h3 class="text-xl font-bold text-neutral-900 mb-1 group-hover:text-black transition-colors">Reserva da Mata</h3>
+                    <p class="text-sm text-neutral-500 mb-3">Residência em Condomínio Fechado</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-neutral-100 px-3 py-1 rounded-full text-[11px] text-neutral-700 font-medium">4 Suítes</span>
+                        <span class="bg-neutral-100 px-3 py-1 rounded-full text-[11px] text-neutral-700 font-medium">Espaço Gourmet</span>
+                    </div>
+                </div>
+                <div class="w-11 h-11 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-800 group-hover:bg-neutral-900 group-hover:text-white group-hover:border-neutral-900 transition-all duration-300 shadow-sm shrink-0 mt-1">
+                    <span class="material-symbols-outlined text-[18px] group-hover:translate-x-0.5 transition-transform duration-300">arrow_forward</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projeto 2 (Com Staggered Scroll Animation) -->
+        <div class="group cursor-pointer reveal-scale delay-200">
+            <div class="relative w-full h-[340px] sm:h-80 rounded-[28px] overflow-hidden mb-4 shadow-md bg-neutral-900">
+                <img 
+                    class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108" 
+                    alt="Residência Minimalismo Luminoso" 
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0hZvD12vkkDpl068yNtcsrv3C0BK-qdcr_GaU1HU9opS2JSjP53FrqNqro2MsPzU9VSsqmo2ZJdAeBQX33w-N2DtydF_YhVw7W-ipn3wZwsmWKUT93fPo6GzzA4Gqfy1h2N77VgMQslax1KRepDqSn_cjl_odxfpbC7IRtLNcQhojL9fbNk8nC0SrsjyBuXZQyJoEm3tUUA0LjIiVIaaqBntrIhq06x6XWx3PWWYY2mGUWGtdqJwpng"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] font-bold text-neutral-900 shadow-md">
+                    350 m²
+                </div>
+            </div>
+            <div class="flex justify-between items-start pt-1">
+                <div>
+                    <h3 class="text-xl font-bold text-neutral-900 mb-1 group-hover:text-black transition-colors">Minimalismo Luminoso</h3>
+                    <p class="text-sm text-neutral-500 mb-3">Mansão Contemporânea</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-neutral-100 px-3 py-1 rounded-full text-[11px] text-neutral-700 font-medium">5 Suítes</span>
+                        <span class="bg-neutral-100 px-3 py-1 rounded-full text-[11px] text-neutral-700 font-medium">Garagem Coberta</span>
+                    </div>
+                </div>
+                <div class="w-11 h-11 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-800 group-hover:bg-neutral-900 group-hover:text-white group-hover:border-neutral-900 transition-all duration-300 shadow-sm shrink-0 mt-1">
+                    <span class="material-symbols-outlined text-[18px] group-hover:translate-x-0.5 transition-transform duration-300">arrow_forward</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projeto 3 (Com Staggered Scroll Animation) -->
+        <div class="group cursor-pointer reveal-scale delay-300">
+            <div class="relative w-full h-[340px] sm:h-80 rounded-[28px] overflow-hidden mb-4 shadow-md bg-neutral-900">
+                <img 
+                    class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108" 
+                    alt="Mansão Náutica Refúgio do Lago" 
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5WzuEZFQa_7xuGto9U8zvgy7zubIimR3l6lh2P9MXIYCwh8SjOs5w9t_zgzPUtUj2VgdUvxzLVibX4NPsLCU4dM4sZueFKbrpzpvVicYF56qx16TycOvJud2Mj3zStcs0XDD7yJ9eH5vTU3kH8v-969nRhYeaTRVXU484kDkBLIRgoqyJsZt47El0Jima0MHwwaOHwfOaZaLnwvUDBMyoMm3RMNQ-pUc8bMPdKW3ilu7Hy9DUEony5Q"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] font-bold text-neutral-900 shadow-md">
+                    190 m²
+                </div>
+            </div>
+            <div class="flex justify-between items-start pt-1">
+                <div>
+                    <h3 class="text-xl font-bold text-neutral-900 mb-1 group-hover:text-black transition-colors">Refúgio do Lago</h3>
+                    <p class="text-sm text-neutral-500 mb-3">Mansão Náutica &amp; Campo</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-neutral-100 px-3 py-1 rounded-full text-[11px] text-neutral-700 font-medium">3 Suítes</span>
+                        <span class="bg-neutral-100 px-3 py-1 rounded-full text-[11px] text-neutral-700 font-medium">Deck Privativo</span>
+                    </div>
+                </div>
+                <div class="w-11 h-11 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-800 group-hover:bg-neutral-900 group-hover:text-white group-hover:border-neutral-900 transition-all duration-300 shadow-sm shrink-0 mt-1">
+                    <span class="material-symbols-outlined text-[18px] group-hover:translate-x-0.5 transition-transform duration-300">arrow_forward</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Autoridade & Ambientes Section (Com Reveal) -->
+<section class="py-12 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto reveal">
+    <div class="bg-neutral-900 text-white rounded-[32px] overflow-hidden flex flex-col lg:flex-row shadow-2xl">
+        <div class="p-10 lg:p-16 lg:w-1/2 flex flex-col justify-center">
+            <p class="text-xs uppercase tracking-widest text-neutral-400 font-semibold mb-3">Engenharia &amp; Design</p>
+            <h2 class="text-2xl sm:text-4xl font-bold mb-6 max-w-md leading-tight">Construímos residências e ambientes dos quais nos orgulhamos</h2>
+            <p class="text-neutral-400 text-sm leading-relaxed mb-10 max-w-md">
+                Do estudo inicial do solo aos acabamentos mais sofisticados, garantimos total integração entre estética, conforto acústico e eficiência energética.
+            </p>
+            <div class="grid grid-cols-2 gap-y-8 gap-x-6 pt-4 border-t border-neutral-800">
+                <div>
+                    <div class="text-3xl sm:text-4xl font-bold text-white mb-1">100%</div>
+                    <div class="text-[11px] text-neutral-400 uppercase tracking-wider">Supervisão Técnica</div>
+                </div>
+                <div>
+                    <div class="text-3xl sm:text-4xl font-bold text-white mb-1">0%</div>
+                    <div class="text-[11px] text-neutral-400 uppercase tracking-wider">Desperdício de Material</div>
+                </div>
+            </div>
+        </div>
+        <div class="lg:w-1/2 min-h-[320px] lg:min-h-[440px] relative">
+            <img 
+                class="w-full h-full object-cover" 
+                alt="Ambientes Internos Sofisticados com Vista para a Natureza" 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkvM-TfBgK72w7hmfD1KtWsk5jl8It9Z4-QDKBIgYWy-uHQok3Kn6GRRLuXTQmcXslrgZkleH8ACCZENUzAoX7STxGjsSi9BQlh0JpdB-EkNN3eZ_e6gG3sXWkGZ8jq1DizfhJwYKskVMyTXvVu88vZ_KQfDL7BOauvo9rj3CJGpVpFhnvNAWZafv5oZOzOPVxXUujV6lcBTWvX3uQF0TOO5Tz1UZDOvVkPD_YK3rcqEMj_mKz8EOi0A"
+            />
+        </div>
+    </div>
+</section>
+
+<!-- Contato & Footer Section (Com Reveal) -->
+<footer id="contato" class="bg-surface py-20 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto border-t border-neutral-200 mt-16">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start mb-20">
+        <!-- Texto e Formulário de Contato -->
+        <div class="lg:col-span-7 reveal">
+            <p class="text-xs uppercase tracking-widest text-neutral-400 font-semibold mb-3">Atendimento Exclusivo</p>
+            <h2 class="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4 leading-tight">
+                Vamos Construir o Projeto<br/>dos Seus Sonhos?
+            </h2>
+            <p class="text-neutral-600 text-sm sm:text-base mb-8 max-w-lg leading-relaxed">
+                Preencha os campos abaixo e nossa equipe de engenheiros e arquitetos entrará em contato para agendar uma reunião sem compromisso.
+            </p>
+            <form class="space-y-6 max-w-xl">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-semibold text-neutral-600 mb-1">Nome Completo</label>
+                        <input class="w-full bg-white border border-neutral-200 rounded-xl px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-neutral-900 focus:ring-0 transition" placeholder="Seu nome" type="text"/>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-neutral-600 mb-1">Telefone / WhatsApp</label>
+                        <input class="w-full bg-white border border-neutral-200 rounded-xl px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-neutral-900 focus:ring-0 transition" placeholder="(11) 99999-9999" type="tel"/>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-neutral-600 mb-1">E-mail Profissional ou Pessoal</label>
+                    <input class="w-full bg-white border border-neutral-200 rounded-xl px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-neutral-900 focus:ring-0 transition" placeholder="seuemail@exemplo.com" type="email"/>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-neutral-600 mb-1">Cidade ou Condomínio da Obra</label>
+                    <input class="w-full bg-white border border-neutral-200 rounded-xl px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-neutral-900 focus:ring-0 transition" placeholder="Ex: Alphaville, São Paulo - SP" type="text"/>
+                </div>
+                <button class="bg-neutral-900 hover:bg-black text-white text-xs font-semibold tracking-wider uppercase px-8 py-4 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center gap-2 w-full sm:w-auto hover:scale-[1.02] active:scale-[0.98]" type="button">
+                    Solicitar Consultoria Gratuita
+                    <span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+                </button>
+            </form>
+        </div>
+
+        <!-- Contatos Info Card -->
+        <div class="lg:col-span-5 bg-white p-8 lg:p-10 rounded-3xl border border-neutral-100 soft-shadow flex flex-col gap-8 reveal delay-200">
+            <h3 class="text-xl font-bold text-neutral-900">Canais de Atendimento</h3>
+            
+            <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-900 shrink-0">
+                    <span class="material-symbols-outlined text-[20px]">call</span>
+                </div>
+                <div>
+                    <div class="text-base font-bold text-neutral-900 mb-0.5">+55 (11) 98765-4321</div>
+                    <div class="text-xs text-neutral-500">Segunda a Sexta, das 9h às 18h</div>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-900 shrink-0">
+                    <span class="material-symbols-outlined text-[20px]">mail</span>
+                </div>
+                <div>
+                    <div class="text-base font-bold text-neutral-900 mb-0.5">atendimento@apexarc.com.br</div>
+                    <div class="text-xs text-neutral-500">Retorno em até 24 horas úteis</div>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-900 shrink-0">
+                    <span class="material-symbols-outlined text-[20px]">location_on</span>
+                </div>
+                <div>
+                    <div class="text-base font-bold text-neutral-900 mb-0.5">São Paulo, SP</div>
+                    <div class="text-xs text-neutral-500">Av. Brigadeiro Faria Lima, 3477 - Itaim Bibi</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Footer -->
+    <div class="grid grid-cols-1 md:flex md:justify-between items-center gap-6 pt-8 border-t border-neutral-200 text-xs text-neutral-500">
+        <div class="text-xl font-bold text-neutral-900 tracking-tight">
+            Apex Arc
+        </div>
+        <div class="flex flex-wrap gap-x-6 gap-y-2">
+            <a class="hover:text-black transition-colors" href="#sobre">Sobre Nós</a>
+            <a class="hover:text-black transition-colors" href="#diferenciais">Diferenciais</a>
+            <a class="hover:text-black transition-colors" href="#portfolio">Portfólio</a>
+            <a class="hover:text-black transition-colors" href="#contato">Contato</a>
+        </div>
+        <div>
+            © 2024 Apex Arc Construtora. Todos os direitos reservados.
+        </div>
+    </div>
+</footer>
+
+<!-- JavaScript do IntersectionObserver para Ativação das Animações no Scroll -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const revealElements = document.querySelectorAll('.reveal, .reveal-scale');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    // Opcional: continuar observando ou desconectar para efeito permanente
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: "0px 0px -50px 0px"
+        });
+
+        revealElements.forEach(el => observer.observe(el));
+    });
+</script>
+
+</body>
+</html>
