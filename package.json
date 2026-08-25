@@ -1,0 +1,10 @@
+{
+  "name": "portifolio-sites-construtoras",
+  "version": "1.0.0",
+  "description": "Portfolio de sites para construtoras",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node server.mjs"
+  },
+  "type": "module"
+}

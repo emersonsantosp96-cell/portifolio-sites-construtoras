@@ -1,11 +1,11 @@
 {
   "version": 2,
+  "framework": null,
   "buildCommand": null,
+  "devCommand": null,
+  "installCommand": null,
   "outputDirectory": ".",
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" }
   ]
 }
