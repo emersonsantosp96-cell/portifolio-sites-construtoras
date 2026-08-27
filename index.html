@@ -122,6 +122,43 @@
                 width: 100%;
             }
         }
+        /* --- Mobile Section Reorder --- */
+        @media (max-width: 767px) {
+            .section-sobre      { order: 1; }
+            .section-portfolio  { order: 2; }
+            .section-diferenciais { order: 3; }
+            .section-autoridade { order: 4; }
+            .sections-wrapper   { display: flex; flex-direction: column; }
+        }
+
+        /* --- Portfolio Carousel (mobile only) --- */
+        .portfolio-carousel-track {
+            display: flex;
+            gap: 16px;
+            width: max-content;
+            will-change: transform;
+        }
+        .portfolio-carousel-track.is-animating {
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .portfolio-carousel-card {
+            flex-shrink: 0;
+            width: 78vw;
+            max-width: 320px;
+        }
+        /* Dots indicator */
+        .carousel-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 9999px;
+            background: #d4d4d8;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .carousel-dot.active {
+            width: 20px;
+            background: #19191d;
+        }
     </style>
 </head>
 <body class="text-on-surface antialiased overflow-x-hidden" style="background-color: var(--site-bg);">
@@ -217,8 +254,11 @@
     </div>
 </section>
 
+<!-- Wrapper para reordenação mobile via CSS order -->
+<div class="sections-wrapper">
+
 <!-- About Company & Key Metrics Grid (Sobre a Empresa) -->
-<section id="sobre" class="w-full px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto py-16 sm:py-24">
+<section id="sobre" class="section-sobre w-full px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto py-16 sm:py-24">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         <!-- Left: Sobre a Construtora & Selos de Qualidade -->
         <div class="lg:col-span-5 flex flex-col justify-between reveal">
@@ -301,7 +341,7 @@
 </section>
 
 <!-- Diferenciais Construtivos Section (QUADROS BRANCOS COM ÍCONES PRETOS) -->
-<section id="diferenciais" class="py-16 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto">
+<section id="diferenciais" class="section-diferenciais py-16 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto">
     <div class="mb-10 reveal">
         <p class="text-xs uppercase tracking-widest text-neutral-400 font-semibold mb-2">Por que construir conosco</p>
         <h2 class="text-2xl sm:text-4xl font-bold text-neutral-900 tracking-tight">Diferenciais que definem nossa excelência</h2>
@@ -354,8 +394,8 @@
     </div>
 </section>
 
-<!-- Nossos Projetos Section (COM ANIMAÇÃO DE SCROLL STAGGERED & HOVER PREMIUM) -->
-<section id="portfolio" class="py-20 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto">
+<!-- Nossos Projetos Section -->
+<section id="portfolio" class="section-portfolio py-10 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto">
     <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4 reveal">
         <div>
             <p class="text-xs uppercase tracking-widest text-neutral-400 font-semibold mb-2">Excelência em Execução</p>
@@ -367,24 +407,69 @@
         </a>
     </div>
 
-    <!-- Grid de Projetos com Animação de Revelação ao Rolar -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Projeto 1 (Com Staggered Scroll Animation) -->
-        <div class="group cursor-pointer reveal-scale delay-100">
-            <div class="relative w-full h-[340px] sm:h-80 rounded-[28px] overflow-hidden mb-4 shadow-md bg-neutral-900">
-                <img 
-                    class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108" 
-                    alt="Casa Reserva da Mata - Condomínio Fechado" 
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcWuiT-Shom28xOEmMQwi5k7-QnJXDIGDXOEFlMN4GLYphVEbQmv9kuDKHEHYWAqrq6PJQ0H9j67RKrrRYyIDGRvwvE-9KXTnzLzgaJLf7BHk4c-GugDusEfy_ukoml5AEpTt5h5n6ns8MAFWgMtS2JLj60hp8DZUwBfwhdBpNDt7dnyW936mei8Uc7Ly-u7YbSlwXDIDFVRklS7fgrxmPqSRXB6LgWINgQSXw-5A6EWqcu5djH-VNKg"
-                />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] font-bold text-neutral-900 shadow-md">
-                    290 m²
+    <!-- ===================== MOBILE: Carrossel lateral ===================== -->
+    <div class="md:hidden overflow-hidden" id="portfolio-carousel-wrapper">
+        <div class="portfolio-carousel-track" id="portfolio-track">
+            <!-- Card 1 -->
+            <div class="portfolio-carousel-card group cursor-pointer">
+                <div class="relative w-full h-[240px] rounded-[24px] overflow-hidden mb-3 shadow-md bg-neutral-900">
+                    <img class="w-full h-full object-cover" alt="Casa Reserva da Mata" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcWuiT-Shom28xOEmMQwi5k7-QnJXDIGDXOEFlMN4GLYphVEbQmv9kuDKHEHYWAqrq6PJQ0H9j67RKrrRYyIDGRvwvE-9KXTnzLzgaJLf7BHk4c-GugDusEfy_ukoml5AEpTt5h5n6ns8MAFWgMtS2JLj60hp8DZUwBfwhdBpNDt7dnyW936mei8Uc7Ly-u7YbSlwXDIDFVRklS7fgrxmPqSRXB6LgWINgQSXw-5A6EWqcu5djH-VNKg"/>
+                    <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-neutral-900 shadow-md">290 m²</div>
                 </div>
+                <h3 class="text-base font-bold text-neutral-900 mb-0.5">Reserva da Mata</h3>
+                <p class="text-xs text-neutral-500 mb-2">Residência em Condomínio Fechado</p>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="bg-neutral-100 px-2.5 py-0.5 rounded-full text-[10px] text-neutral-700 font-medium">4 Suítes</span>
+                    <span class="bg-neutral-100 px-2.5 py-0.5 rounded-full text-[10px] text-neutral-700 font-medium">Espaço Gourmet</span>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="portfolio-carousel-card group cursor-pointer">
+                <div class="relative w-full h-[240px] rounded-[24px] overflow-hidden mb-3 shadow-md bg-neutral-900">
+                    <img class="w-full h-full object-cover" alt="Minimalismo Luminoso" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0hZvD12vkkDpl068yNtcsrv3C0BK-qdcr_GaU1HU9opS2JSjP53FrqNqro2MsPzU9VSsqmo2ZJdAeBQX33w-N2DtydF_YhVw7W-ipn3wZwsmWKUT93fPo6GzzA4Gqfy1h2N77VgMQslax1KRepDqSn_cjl_odxfpbC7IRtLNcQhojL9fbNk8nC0SrsjyBuXZQyJoEm3tUUA0LjIiVIaaqBntrIhq06x6XWx3PWWYY2mGUWGtdqJwpng"/>
+                    <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-neutral-900 shadow-md">350 m²</div>
+                </div>
+                <h3 class="text-base font-bold text-neutral-900 mb-0.5">Minimalismo Luminoso</h3>
+                <p class="text-xs text-neutral-500 mb-2">Mansão Contemporânea</p>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="bg-neutral-100 px-2.5 py-0.5 rounded-full text-[10px] text-neutral-700 font-medium">5 Suítes</span>
+                    <span class="bg-neutral-100 px-2.5 py-0.5 rounded-full text-[10px] text-neutral-700 font-medium">Garagem Coberta</span>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="portfolio-carousel-card group cursor-pointer">
+                <div class="relative w-full h-[240px] rounded-[24px] overflow-hidden mb-3 shadow-md bg-neutral-900">
+                    <img class="w-full h-full object-cover" alt="Refúgio do Lago" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5WzuEZFQa_7xuGto9U8zvgy7zubIimR3l6lh2P9MXIYCwh8SjOs5w9t_zgzPUtUj2VgdUvxzLVibX4NPsLCU4dM4sZueFKbrpzpvVicYF56qx16TycOvJud2Mj3zStcs0XDD7yJ9eH5vTU3kH8v-969nRhYeaTRVXU484kDkBLIRgoqyJsZt47El0Jima0MHwwaOHwfOaZaLnwvUDBMyoMm3RMNQ-pUc8bMPdKW3ilu7Hy9DUEony5Q"/>
+                    <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-neutral-900 shadow-md">190 m²</div>
+                </div>
+                <h3 class="text-base font-bold text-neutral-900 mb-0.5">Refúgio do Lago</h3>
+                <p class="text-xs text-neutral-500 mb-2">Mansão Náutica & Campo</p>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="bg-neutral-100 px-2.5 py-0.5 rounded-full text-[10px] text-neutral-700 font-medium">3 Suítes</span>
+                    <span class="bg-neutral-100 px-2.5 py-0.5 rounded-full text-[10px] text-neutral-700 font-medium">Deck Privativo</span>
+                </div>
+            </div>
+        </div>
+        <!-- Dots -->
+        <div class="flex items-center justify-center gap-2 mt-5" id="carousel-dots">
+            <div class="carousel-dot active" data-index="0"></div>
+            <div class="carousel-dot" data-index="1"></div>
+            <div class="carousel-dot" data-index="2"></div>
+        </div>
+    </div>
+
+    <!-- ===================== DESKTOP: Grid original ===================== -->
+    <div class="hidden md:grid md:grid-cols-3 gap-8">
+        <!-- Projeto 1 -->
+        <div class="group cursor-pointer reveal-scale delay-100">
+            <div class="relative w-full h-80 rounded-[28px] overflow-hidden mb-4 shadow-md bg-neutral-900">
+                <img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108" alt="Casa Reserva da Mata" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcWuiT-Shom28xOEmMQwi5k7-QnJXDIGDXOEFlMN4GLYphVEbQmv9kuDKHEHYWAqrq6PJQ0H9j67RKrrRYyIDGRvwvE-9KXTnzLzgaJLf7BHk4c-GugDusEfy_ukoml5AEpTt5h5n6ns8MAFWgMtS2JLj60hp8DZUwBfwhdBpNDt7dnyW936mei8Uc7Ly-u7YbSlwXDIDFVRklS7fgrxmPqSRXB6LgWINgQSXw-5A6EWqcu5djH-VNKg"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] font-bold text-neutral-900 shadow-md">290 m²</div>
             </div>
             <div class="flex justify-between items-start pt-1">
                 <div>
-                    <h3 class="text-xl font-bold text-neutral-900 mb-1 group-hover:text-black transition-colors">Reserva da Mata</h3>
+                    <h3 class="text-xl font-bold text-neutral-900 mb-1">Reserva da Mata</h3>
                     <p class="text-sm text-neutral-500 mb-3">Residência em Condomínio Fechado</p>
                     <div class="flex flex-wrap gap-2">
                         <span class="bg-neutral-100 px-3 py-1 rounded-full text-[11px] text-neutral-700 font-medium">4 Suítes</span>
@@ -392,27 +477,20 @@
                     </div>
                 </div>
                 <div class="w-11 h-11 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-800 group-hover:bg-neutral-900 group-hover:text-white group-hover:border-neutral-900 transition-all duration-300 shadow-sm shrink-0 mt-1">
-                    <span class="material-symbols-outlined text-[18px] group-hover:translate-x-0.5 transition-transform duration-300">arrow_forward</span>
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
                 </div>
             </div>
         </div>
-
-        <!-- Projeto 2 (Com Staggered Scroll Animation) -->
+        <!-- Projeto 2 -->
         <div class="group cursor-pointer reveal-scale delay-200">
-            <div class="relative w-full h-[340px] sm:h-80 rounded-[28px] overflow-hidden mb-4 shadow-md bg-neutral-900">
-                <img 
-                    class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108" 
-                    alt="Residência Minimalismo Luminoso" 
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0hZvD12vkkDpl068yNtcsrv3C0BK-qdcr_GaU1HU9opS2JSjP53FrqNqro2MsPzU9VSsqmo2ZJdAeBQX33w-N2DtydF_YhVw7W-ipn3wZwsmWKUT93fPo6GzzA4Gqfy1h2N77VgMQslax1KRepDqSn_cjl_odxfpbC7IRtLNcQhojL9fbNk8nC0SrsjyBuXZQyJoEm3tUUA0LjIiVIaaqBntrIhq06x6XWx3PWWYY2mGUWGtdqJwpng"
-                />
+            <div class="relative w-full h-80 rounded-[28px] overflow-hidden mb-4 shadow-md bg-neutral-900">
+                <img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108" alt="Minimalismo Luminoso" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0hZvD12vkkDpl068yNtcsrv3C0BK-qdcr_GaU1HU9opS2JSjP53FrqNqro2MsPzU9VSsqmo2ZJdAeBQX33w-N2DtydF_YhVw7W-ipn3wZwsmWKUT93fPo6GzzA4Gqfy1h2N77VgMQslax1KRepDqSn_cjl_odxfpbC7IRtLNcQhojL9fbNk8nC0SrsjyBuXZQyJoEm3tUUA0LjIiVIaaqBntrIhq06x6XWx3PWWYY2mGUWGtdqJwpng"/>
                 <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] font-bold text-neutral-900 shadow-md">
-                    350 m²
-                </div>
+                <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] font-bold text-neutral-900 shadow-md">350 m²</div>
             </div>
             <div class="flex justify-between items-start pt-1">
                 <div>
-                    <h3 class="text-xl font-bold text-neutral-900 mb-1 group-hover:text-black transition-colors">Minimalismo Luminoso</h3>
+                    <h3 class="text-xl font-bold text-neutral-900 mb-1">Minimalismo Luminoso</h3>
                     <p class="text-sm text-neutral-500 mb-3">Mansão Contemporânea</p>
                     <div class="flex flex-wrap gap-2">
                         <span class="bg-neutral-100 px-3 py-1 rounded-full text-[11px] text-neutral-700 font-medium">5 Suítes</span>
@@ -420,35 +498,28 @@
                     </div>
                 </div>
                 <div class="w-11 h-11 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-800 group-hover:bg-neutral-900 group-hover:text-white group-hover:border-neutral-900 transition-all duration-300 shadow-sm shrink-0 mt-1">
-                    <span class="material-symbols-outlined text-[18px] group-hover:translate-x-0.5 transition-transform duration-300">arrow_forward</span>
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
                 </div>
             </div>
         </div>
-
-        <!-- Projeto 3 (Com Staggered Scroll Animation) -->
+        <!-- Projeto 3 -->
         <div class="group cursor-pointer reveal-scale delay-300">
-            <div class="relative w-full h-[340px] sm:h-80 rounded-[28px] overflow-hidden mb-4 shadow-md bg-neutral-900">
-                <img 
-                    class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108" 
-                    alt="Mansão Náutica Refúgio do Lago" 
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5WzuEZFQa_7xuGto9U8zvgy7zubIimR3l6lh2P9MXIYCwh8SjOs5w9t_zgzPUtUj2VgdUvxzLVibX4NPsLCU4dM4sZueFKbrpzpvVicYF56qx16TycOvJud2Mj3zStcs0XDD7yJ9eH5vTU3kH8v-969nRhYeaTRVXU484kDkBLIRgoqyJsZt47El0Jima0MHwwaOHwfOaZaLnwvUDBMyoMm3RMNQ-pUc8bMPdKW3ilu7Hy9DUEony5Q"
-                />
+            <div class="relative w-full h-80 rounded-[28px] overflow-hidden mb-4 shadow-md bg-neutral-900">
+                <img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108" alt="Refúgio do Lago" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5WzuEZFQa_7xuGto9U8zvgy7zubIimR3l6lh2P9MXIYCwh8SjOs5w9t_zgzPUtUj2VgdUvxzLVibX4NPsLCU4dM4sZueFKbrpzpvVicYF56qx16TycOvJud2Mj3zStcs0XDD7yJ9eH5vTU3kH8v-969nRhYeaTRVXU484kDkBLIRgoqyJsZt47El0Jima0MHwwaOHwfOaZaLnwvUDBMyoMm3RMNQ-pUc8bMPdKW3ilu7Hy9DUEony5Q"/>
                 <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] font-bold text-neutral-900 shadow-md">
-                    190 m²
-                </div>
+                <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] font-bold text-neutral-900 shadow-md">190 m²</div>
             </div>
             <div class="flex justify-between items-start pt-1">
                 <div>
-                    <h3 class="text-xl font-bold text-neutral-900 mb-1 group-hover:text-black transition-colors">Refúgio do Lago</h3>
-                    <p class="text-sm text-neutral-500 mb-3">Mansão Náutica &amp; Campo</p>
+                    <h3 class="text-xl font-bold text-neutral-900 mb-1">Refúgio do Lago</h3>
+                    <p class="text-sm text-neutral-500 mb-3">Mansão Náutica & Campo</p>
                     <div class="flex flex-wrap gap-2">
                         <span class="bg-neutral-100 px-3 py-1 rounded-full text-[11px] text-neutral-700 font-medium">3 Suítes</span>
                         <span class="bg-neutral-100 px-3 py-1 rounded-full text-[11px] text-neutral-700 font-medium">Deck Privativo</span>
                     </div>
                 </div>
                 <div class="w-11 h-11 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-800 group-hover:bg-neutral-900 group-hover:text-white group-hover:border-neutral-900 transition-all duration-300 shadow-sm shrink-0 mt-1">
-                    <span class="material-symbols-outlined text-[18px] group-hover:translate-x-0.5 transition-transform duration-300">arrow_forward</span>
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
                 </div>
             </div>
         </div>
@@ -456,7 +527,7 @@
 </section>
 
 <!-- Autoridade & Ambientes Section (Com Reveal) -->
-<section class="py-12 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto reveal">
+<section class="section-autoridade py-12 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto reveal">
     <div class="bg-neutral-900 text-white rounded-[32px] overflow-hidden flex flex-col lg:flex-row shadow-2xl">
         <div class="p-8 sm:p-10 lg:p-16 lg:w-1/2 flex flex-col justify-center">
             <p class="text-xs uppercase tracking-widest text-neutral-400 font-semibold mb-3">Engenharia &amp; Design</p>
@@ -484,6 +555,7 @@
         </div>
     </div>
 </section>
+</div><!-- End .sections-wrapper -->
 
 <!-- Contato & Footer Section (Com Reveal) -->
 <footer id="contato" class="bg-surface py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto border-t border-neutral-200 mt-12 sm:mt-16">
@@ -621,6 +693,105 @@
                 menuIcon.textContent = 'menu';
             });
         });
+
+        // --- Mobile Portfolio Carousel ---
+        const track = document.getElementById('portfolio-track');
+        const dots = document.querySelectorAll('#carousel-dots .carousel-dot');
+        const wrapper = document.getElementById('portfolio-carousel-wrapper');
+
+        if (track && wrapper && dots.length) {
+            let currentIndex = 0;
+            const totalCards = dots.length;
+            let autoLoopInterval = null;
+            let isUserInteracted = false;
+
+            function getSlideWidth() {
+                const card = track.querySelector('.portfolio-carousel-card');
+                return card ? card.offsetWidth + 16 : 300;
+            }
+
+            function updateCarousel(index, animate = true) {
+                currentIndex = (index + totalCards) % totalCards;
+                const offset = currentIndex * getSlideWidth();
+                if (animate) {
+                    track.classList.add('is-animating');
+                } else {
+                    track.classList.remove('is-animating');
+                }
+                track.style.transform = `translateX(-${offset}px)`;
+
+                dots.forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === currentIndex);
+                });
+            }
+
+            function startAutoLoop() {
+                if (autoLoopInterval || isUserInteracted) return;
+                autoLoopInterval = setInterval(() => {
+                    updateCarousel(currentIndex + 1);
+                }, 3200);
+            }
+
+            function stopAutoLoop() {
+                if (autoLoopInterval) {
+                    clearInterval(autoLoopInterval);
+                    autoLoopInterval = null;
+                }
+                isUserInteracted = true;
+            }
+
+            startAutoLoop();
+
+            // Touch & Drag events to pause auto-loop and manual navigation
+            let startX = 0;
+            let currentX = 0;
+            let isDragging = false;
+
+            wrapper.addEventListener('touchstart', (e) => {
+                stopAutoLoop();
+                startX = e.touches[0].clientX;
+                currentX = startX;
+                isDragging = true;
+                track.classList.remove('is-animating');
+            }, { passive: true });
+
+            wrapper.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                currentX = e.touches[0].clientX;
+                const diff = currentX - startX;
+                const baseOffset = currentIndex * getSlideWidth();
+                track.style.transform = `translateX(-${baseOffset - diff}px)`;
+            }, { passive: true });
+
+            wrapper.addEventListener('touchend', () => {
+                if (!isDragging) return;
+                isDragging = false;
+                const diff = currentX - startX;
+                if (Math.abs(diff) > 40) {
+                    if (diff < 0) {
+                        updateCarousel(currentIndex + 1);
+                    } else {
+                        updateCarousel(currentIndex - 1);
+                    }
+                } else {
+                    updateCarousel(currentIndex);
+                }
+            });
+
+            // Allow click on cards or dots to pause auto-loop
+            wrapper.addEventListener('click', () => {
+                stopAutoLoop();
+            });
+
+            dots.forEach((dot) => {
+                dot.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    stopAutoLoop();
+                    const index = parseInt(dot.getAttribute('data-index'), 10);
+                    updateCarousel(index);
+                });
+            });
+        }
     });
 </script>
 
