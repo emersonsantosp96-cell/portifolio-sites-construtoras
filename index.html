@@ -122,13 +122,11 @@
                 width: 100%;
             }
         }
-        /* --- Mobile Section Reorder & Compact Spacing --- */
+        /* --- Mobile Section Spacing --- */
         @media (max-width: 767px) {
-            .section-portfolio  { order: 1; padding-top: 2rem !important; padding-bottom: 2rem !important; }
-            .section-sobre      { order: 2; padding-top: 2rem !important; padding-bottom: 2rem !important; }
-            .section-diferenciais { order: 3; padding-top: 2rem !important; }
-            .section-autoridade { order: 4; }
-            .sections-wrapper   { display: flex; flex-direction: column; }
+            .section-portfolio  { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+            .section-sobre      { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+            .section-diferenciais { padding-top: 2rem !important; }
         }
 
         /* --- Portfolio Carousel (mobile only) --- */
@@ -254,52 +252,149 @@
     </div>
 </section>
 
-<!-- Wrapper para reordenação mobile via CSS order -->
+<!-- Wrapper para seções -->
 <div class="sections-wrapper">
 
-<!-- About Company & Key Metrics Grid (Sobre a Empresa) -->
-<section id="sobre" class="section-sobre w-full px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto py-16 sm:py-24">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-        <!-- Left: Sobre a Construtora & Selos de Qualidade -->
-        <div class="lg:col-span-5 flex flex-col justify-between reveal">
-            <div>
-                <h2 class="text-2xl sm:text-3xl font-bold text-neutral-900 mb-4 tracking-tight">
-                    Sobre a Apex Arc
-                </h2>
-                <p class="text-neutral-600 text-sm sm:text-base leading-relaxed mb-10 max-w-md">
-                    Na Apex Arc, acreditamos que construir vai além de erguer estruturas; trata-se de conceber ambientes e refúgios exclusivos que elevam a qualidade de vida e expressam a sua personalidade com sofisticação.
-                </p>
-            </div>
+<!-- Nossos Projetos Section (Agora em primeiro após a Hero no Desktop e Mobile) -->
+<section id="portfolio" class="section-portfolio py-12 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-12 gap-4 reveal">
+        <div>
+            <p class="text-xs uppercase tracking-widest text-neutral-400 font-semibold mb-2">Excelência em Execução</p>
+            <h2 class="text-2xl sm:text-4xl font-bold text-neutral-900 tracking-tight">Nosso Portfólio de Obras Exclusivas</h2>
+        </div>
+        <a class="hidden md:flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-neutral-700 hover:text-black transition-colors" href="#contato">
+            Conhecer Todos os Projetos
+            <span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+        </a>
+    </div>
 
-            <!-- Selos / Logos de Referência e Parceiros -->
-            <div class="flex items-center gap-8 text-neutral-400 grayscale opacity-80 pt-2">
-                <!-- Selo 1 -->
-                <div class="flex items-center gap-1.5 font-bold tracking-tighter text-base sm:text-lg text-neutral-700">
-                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2L4 6v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V6l-8-4zm0 2.18l6 3v4.82c0 4.52-3.13 8.74-6 9.88-2.87-1.14-6-5.36-6-9.88V7.18l6-3z"/>
-                    </svg>
-                    <span>LEED Gold</span>
+    <!-- ===================== MOBILE: Carrossel lateral ===================== -->
+    <div class="md:hidden overflow-hidden" id="portfolio-carousel-wrapper">
+        <div class="portfolio-carousel-track" id="portfolio-track">
+            <!-- Card 1 -->
+            <div class="portfolio-carousel-card group cursor-pointer">
+                <div class="relative w-full h-[240px] rounded-[24px] overflow-hidden mb-3 shadow-md bg-neutral-900">
+                    <img class="w-full h-full object-cover" alt="Casa Reserva da Mata" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcWuiT-Shom28xOEmMQwi5k7-QnJXDIGDXOEFlMN4GLYphVEbQmv9kuDKHEHYWAqrq6PJQ0H9j67RKrrRYyIDGRvwvE-9KXTnzLzgaJLf7BHk4c-GugDusEfy_ukoml5AEpTt5h5n6ns8MAFWgMtS2JLj60hp8DZUwBfwhdBpNDt7dnyW936mei8Uc7Ly-u7YbSlwXDIDFVRklS7fgrxmPqSRXB6LgWINgQSXw-5A6EWqcu5djH-VNKg"/>
+                    <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-neutral-900 shadow-md">290 m²</div>
                 </div>
-                <!-- Selo 2 -->
-                <div class="font-semibold text-sm sm:text-base text-neutral-700 tracking-tight flex items-center gap-1">
-                    <span class="w-3.5 h-3.5 rounded-full border-2 border-neutral-700"></span>
-                    <span>PBQP-H A</span>
+                <h3 class="text-base font-bold text-neutral-900 mb-0.5">Reserva da Mata</h3>
+                <p class="text-xs text-neutral-500 mb-2">Residência em Condomínio Fechado</p>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="bg-neutral-100 px-2.5 py-0.5 rounded-full text-[10px] text-neutral-700 font-medium">4 Suítes</span>
+                    <span class="bg-neutral-100 px-2.5 py-0.5 rounded-full text-[10px] text-neutral-700 font-medium">Espaço Gourmet</span>
                 </div>
-                <!-- Selo 3 -->
-                <div class="font-bold text-sm sm:text-base tracking-widest text-neutral-700 flex items-center gap-1">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                        <polygon points="12 2 2 22 22 22"/>
-                    </svg>
-                    <span>GBC Brasil</span>
+            </div>
+            <!-- Card 2 -->
+            <div class="portfolio-carousel-card group cursor-pointer">
+                <div class="relative w-full h-[240px] rounded-[24px] overflow-hidden mb-3 shadow-md bg-neutral-900">
+                    <img class="w-full h-full object-cover" alt="Minimalismo Luminoso" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0hZvD12vkkDpl068yNtcsrv3C0BK-qdcr_GaU1HU9opS2JSjP53FrqNqro2MsPzU9VSsqmo2ZJdAeBQX33w-N2DtydF_YhVw7W-ipn3wZwsmWKUT93fPo6GzzA4Gqfy1h2N77VgMQslax1KRepDqSn_cjl_odxfpbC7IRtLNcQhojL9fbNk8nC0SrsjyBuXZQyJoEm3tUUA0LjIiVIaaqBntrIhq06x6XWx3PWWYY2mGUWGtdqJwpng"/>
+                    <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-neutral-900 shadow-md">350 m²</div>
+                </div>
+                <h3 class="text-base font-bold text-neutral-900 mb-0.5">Minimalismo Luminoso</h3>
+                <p class="text-xs text-neutral-500 mb-2">Mansão Contemporânea</p>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="bg-neutral-100 px-2.5 py-0.5 rounded-full text-[10px] text-neutral-700 font-medium">5 Suítes</span>
+                    <span class="bg-neutral-100 px-2.5 py-0.5 rounded-full text-[10px] text-neutral-700 font-medium">Garagem Coberta</span>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="portfolio-carousel-card group cursor-pointer">
+                <div class="relative w-full h-[240px] rounded-[24px] overflow-hidden mb-3 shadow-md bg-neutral-900">
+                    <img class="w-full h-full object-cover" alt="Refúgio do Lago" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5WzuEZFQa_7xuGto9U8zvgy7zubIimR3l6lh2P9MXIYCwh8SjOs5w9t_zgzPUtUj2VgdUvxzLVibX4NPsLCU4dM4sZueFKbrpzpvVicYF56qx16TycOvJud2Mj3zStcs0XDD7yJ9eH5vTU3kH8v-969nRhYeaTRVXU484kDkBLIRgoqyJsZt47El0Jima0MHwwaOHwfOaZaLnwvUDBMyoMm3RMNQ-pUc8bMPdKW3ilu7Hy9DUEony5Q"/>
+                    <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-neutral-900 shadow-md">190 m²</div>
+                </div>
+                <h3 class="text-base font-bold text-neutral-900 mb-0.5">Refúgio do Lago</h3>
+                <p class="text-xs text-neutral-500 mb-2">Mansão Náutica & Campo</p>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="bg-neutral-100 px-2.5 py-0.5 rounded-full text-[10px] text-neutral-700 font-medium">3 Suítes</span>
+                    <span class="bg-neutral-100 px-2.5 py-0.5 rounded-full text-[10px] text-neutral-700 font-medium">Deck Privativo</span>
                 </div>
             </div>
         </div>
+        <!-- Dots -->
+        <div class="flex items-center justify-center gap-2 mt-5" id="carousel-dots">
+            <div class="carousel-dot active" data-index="0"></div>
+            <div class="carousel-dot" data-index="1"></div>
+            <div class="carousel-dot" data-index="2"></div>
+        </div>
+    </div>
 
-        <!-- Right: 2x2 Grid de Métricas de Autoridade -->
-        <div class="lg:col-span-7 grid grid-cols-2 gap-y-10 gap-x-8 sm:gap-x-12 border-t lg:border-t-0 lg:border-l border-neutral-200/80 pt-8 lg:pt-0 lg:pl-16">
+    <!-- ===================== DESKTOP: Grid original ===================== -->
+    <div class="hidden md:grid md:grid-cols-3 gap-8">
+        <!-- Projeto 1 -->
+        <div class="group cursor-pointer reveal-scale delay-100">
+            <div class="relative w-full h-80 rounded-[28px] overflow-hidden mb-4 shadow-md bg-neutral-900">
+                <img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108" alt="Casa Reserva da Mata" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcWuiT-Shom28xOEmMQwi5k7-QnJXDIGDXOEFlMN4GLYphVEbQmv9kuDKHEHYWAqrq6PJQ0H9j67RKrrRYyIDGRvwvE-9KXTnzLzgaJLf7BHk4c-GugDusEfy_ukoml5AEpTt5h5n6ns8MAFWgMtS2JLj60hp8DZUwBfwhdBpNDt7dnyW936mei8Uc7Ly-u7YbSlwXDIDFVRklS7fgrxmPqSRXB6LgWINgQSXw-5A6EWqcu5djH-VNKg"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] font-bold text-neutral-900 shadow-md">290 m²</div>
+            </div>
+            <div class="flex justify-between items-start pt-1">
+                <div>
+                    <h3 class="text-xl font-bold text-neutral-900 mb-1">Reserva da Mata</h3>
+                    <p class="text-sm text-neutral-500 mb-3">Residência em Condomínio Fechado</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-neutral-100 px-3 py-1 rounded-full text-[11px] text-neutral-700 font-medium">4 Suítes</span>
+                        <span class="bg-neutral-100 px-3 py-1 rounded-full text-[11px] text-neutral-700 font-medium">Espaço Gourmet</span>
+                    </div>
+                </div>
+                <div class="w-11 h-11 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-800 group-hover:bg-neutral-900 group-hover:text-white group-hover:border-neutral-900 transition-all duration-300 shadow-sm shrink-0 mt-1">
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </div>
+            </div>
+        </div>
+        <!-- Projeto 2 -->
+        <div class="group cursor-pointer reveal-scale delay-200">
+            <div class="relative w-full h-80 rounded-[28px] overflow-hidden mb-4 shadow-md bg-neutral-900">
+                <img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108" alt="Minimalismo Luminoso" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0hZvD12vkkDpl068yNtcsrv3C0BK-qdcr_GaU1HU9opS2JSjP53FrqNqro2MsPzU9VSsqmo2ZJdAeBQX33w-N2DtydF_YhVw7W-ipn3wZwsmWKUT93fPo6GzzA4Gqfy1h2N77VgMQslax1KRepDqSn_cjl_odxfpbC7IRtLNcQhojL9fbNk8nC0SrsjyBuXZQyJoEm3tUUA0LjIiVIaaqBntrIhq06x6XWx3PWWYY2mGUWGtdqJwpng"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] font-bold text-neutral-900 shadow-md">350 m²</div>
+            </div>
+            <div class="flex justify-between items-start pt-1">
+                <div>
+                    <h3 class="text-xl font-bold text-neutral-900 mb-1">Minimalismo Luminoso</h3>
+                    <p class="text-sm text-neutral-500 mb-3">Mansão Contemporânea</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-neutral-100 px-3 py-1 rounded-full text-[11px] text-neutral-700 font-medium">5 Suítes</span>
+                        <span class="bg-neutral-100 px-3 py-1 rounded-full text-[11px] text-neutral-700 font-medium">Garagem Coberta</span>
+                    </div>
+                </div>
+                <div class="w-11 h-11 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-800 group-hover:bg-neutral-900 group-hover:text-white group-hover:border-neutral-900 transition-all duration-300 shadow-sm shrink-0 mt-1">
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </div>
+            </div>
+        </div>
+        <!-- Projeto 3 -->
+        <div class="group cursor-pointer reveal-scale delay-300">
+            <div class="relative w-full h-80 rounded-[28px] overflow-hidden mb-4 shadow-md bg-neutral-900">
+                <img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108" alt="Refúgio do Lago" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5WzuEZFQa_7xuGto9U8zvgy7zubIimR3l6lh2P9MXIYCwh8SjOs5w9t_zgzPUtUj2VgdUvxzLVibX4NPsLCU4dM4sZueFKbrpzpvVicYF56qx16TycOvJud2Mj3zStcs0XDD7yJ9eH5vTU3kH8v-969nRhYeaTRVXU484kDkBLIRgoqyJsZt47El0Jima0MHwwaOHwfOaZaLnwvUDBMyoMm3RMNQ-pUc8bMPdKW3ilu7Hy9DUEony5Q"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] font-bold text-neutral-900 shadow-md">190 m²</div>
+            </div>
+            <div class="flex justify-between items-start pt-1">
+                <div>
+                    <h3 class="text-xl font-bold text-neutral-900 mb-1">Refúgio do Lago</h3>
+                    <p class="text-sm text-neutral-500 mb-3">Mansão Náutica & Campo</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-neutral-100 px-3 py-1 rounded-full text-[11px] text-neutral-700 font-medium">3 Suítes</span>
+                        <span class="bg-neutral-100 px-3 py-1 rounded-full text-[11px] text-neutral-700 font-medium">Deck Privativo</span>
+                    </div>
+                </div>
+                <div class="w-11 h-11 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-800 group-hover:bg-neutral-900 group-hover:text-white group-hover:border-neutral-900 transition-all duration-300 shadow-sm shrink-0 mt-1">
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Company & Key Metrics Grid (Sobre a Empresa) -->
+<section id="sobre" class="section-sobre w-full px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto py-12 sm:py-20">
+    <div class="flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+        <!-- Métricas (No Mobile vem PRIMEIRO: order-1 no flex-col, lg:order-2 na grid) -->
+        <div class="order-1 lg:order-2 lg:col-span-7 grid grid-cols-2 gap-y-6 sm:gap-y-10 gap-x-6 sm:gap-x-12 w-full">
             <!-- Stat 1 -->
             <div class="reveal delay-100">
-                <div class="text-3xl sm:text-4xl lg:text-[44px] font-bold text-neutral-900 tracking-tight mb-2">
+                <div class="text-3xl sm:text-4xl lg:text-[44px] font-bold text-neutral-900 tracking-tight mb-1 sm:mb-2">
                     25+
                 </div>
                 <p class="text-xs sm:text-sm text-neutral-500 font-medium leading-snug">
@@ -309,7 +404,7 @@
 
             <!-- Stat 2 -->
             <div class="reveal delay-200">
-                <div class="text-3xl sm:text-4xl lg:text-[44px] font-bold text-neutral-900 tracking-tight mb-2">
+                <div class="text-3xl sm:text-4xl lg:text-[44px] font-bold text-neutral-900 tracking-tight mb-1 sm:mb-2">
                     500+
                 </div>
                 <p class="text-xs sm:text-sm text-neutral-500 font-medium leading-snug">
@@ -319,7 +414,7 @@
 
             <!-- Stat 3 -->
             <div class="reveal delay-300">
-                <div class="text-3xl sm:text-4xl lg:text-[44px] font-bold text-neutral-900 tracking-tight mb-2">
+                <div class="text-3xl sm:text-4xl lg:text-[44px] font-bold text-neutral-900 tracking-tight mb-1 sm:mb-2">
                     98%
                 </div>
                 <p class="text-xs sm:text-sm text-neutral-500 font-medium leading-snug">
@@ -329,7 +424,7 @@
 
             <!-- Stat 4 -->
             <div class="reveal delay-400">
-                <div class="text-3xl sm:text-4xl lg:text-[44px] font-bold text-neutral-900 tracking-tight mb-2">
+                <div class="text-3xl sm:text-4xl lg:text-[44px] font-bold text-neutral-900 tracking-tight mb-1 sm:mb-2">
                     15+
                 </div>
                 <p class="text-xs sm:text-sm text-neutral-500 font-medium leading-snug">
@@ -337,65 +432,43 @@
                 </p>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- Diferenciais Construtivos Section (QUADROS BRANCOS COM ÍCONES PRETOS) -->
-<section id="diferenciais" class="section-diferenciais py-16 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto">
-    <div class="mb-10 reveal">
-        <p class="text-xs uppercase tracking-widest text-neutral-400 font-semibold mb-2">Por que construir conosco</p>
-        <h2 class="text-2xl sm:text-4xl font-bold text-neutral-900 tracking-tight">Diferenciais que definem nossa excelência</h2>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Card 1 -->
-        <div class="bg-white text-neutral-900 p-8 sm:p-9 rounded-[28px] border border-neutral-200/90 soft-shadow flex flex-col justify-between gap-6 transform transition duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-neutral-300 group reveal delay-100">
-            <div class="w-14 h-14 bg-black text-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
-                <span class="material-symbols-outlined text-[26px]">workspace_premium</span>
-            </div>
+        <!-- Texto Sobre (No Mobile vem SEGUNDO: order-2 no flex-col, lg:order-1 na grid) -->
+        <div class="order-2 lg:order-1 lg:col-span-5 flex flex-col justify-between reveal pt-6 lg:pt-0 border-t lg:border-t-0 border-neutral-200/80 w-full">
             <div>
-                <h3 class="text-lg sm:text-xl font-bold text-neutral-900 leading-tight mb-2.5">Padrão Construtivo Superior</h3>
-                <p class="text-sm text-neutral-600 leading-relaxed">Materiais nobres e tecnologias construtivas certificadas para máxima durabilidade e valorização do imóvel.</p>
+                <h2 class="text-2xl sm:text-3xl font-bold text-neutral-900 mb-3 sm:mb-4 tracking-tight">
+                    Sobre a Apex Arc
+                </h2>
+                <p class="text-neutral-600 text-sm sm:text-base leading-relaxed mb-6 sm:mb-10 max-w-md">
+                    Na Apex Arc, acreditamos que construir vai além de erguer estruturas; trata-se de conceber ambientes e refúgios exclusivos que elevam a qualidade de vida e expressam a sua personalidade com sofisticação.
+                </p>
             </div>
-        </div>
 
-        <!-- Card 2 -->
-        <div class="bg-white text-neutral-900 p-8 sm:p-9 rounded-[28px] border border-neutral-200/90 soft-shadow flex flex-col justify-between gap-6 transform transition duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-neutral-300 group reveal delay-200">
-            <div class="w-14 h-14 bg-black text-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
-                <span class="material-symbols-outlined text-[26px]">architecture</span>
-            </div>
-            <div>
-                <h3 class="text-lg sm:text-xl font-bold text-neutral-900 leading-tight mb-2.5">Projetos Sob Medida</h3>
-                <p class="text-sm text-neutral-600 leading-relaxed">Arquitetura autoral e bioclimática pensada milimetricamente para o seu terreno, insolação e estilo de vida.</p>
-            </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="bg-white text-neutral-900 p-8 sm:p-9 rounded-[28px] border border-neutral-200/90 soft-shadow flex flex-col justify-between gap-6 transform transition duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-neutral-300 group reveal delay-300">
-            <div class="w-14 h-14 bg-black text-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
-                <span class="material-symbols-outlined text-[26px]">event_available</span>
-            </div>
-            <div>
-                <h3 class="text-lg sm:text-xl font-bold text-neutral-900 leading-tight mb-2.5">Rigor Absoluto nos Prazos</h3>
-                <p class="text-sm text-neutral-600 leading-relaxed">Planejamento transparente com relatórios periódicos de evolução e compromisso contratual de entrega pontual.</p>
-            </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="bg-white text-neutral-900 p-8 sm:p-9 rounded-[28px] border border-neutral-200/90 soft-shadow flex flex-col justify-between gap-6 transform transition duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-neutral-300 group reveal delay-400">
-            <div class="w-14 h-14 bg-black text-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
-                <span class="material-symbols-outlined text-[26px]">verified_user</span>
-            </div>
-            <div>
-                <h3 class="text-lg sm:text-xl font-bold text-neutral-900 leading-tight mb-2.5">Garantia Estrutural de 10 Anos</h3>
-                <p class="text-sm text-neutral-600 leading-relaxed">Suporte pós-obra completo e assistência técnica especializada para a total tranquilidade da sua família.</p>
+            <!-- Selos / Logos de Referência e Parceiros -->
+            <div class="flex items-center gap-6 sm:gap-8 text-neutral-400 grayscale opacity-80 pt-2">
+                <!-- Selo 1 -->
+                <div class="flex items-center gap-1.5 font-bold tracking-tighter text-sm sm:text-lg text-neutral-700">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L4 6v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V6l-8-4zm0 2.18l6 3v4.82c0 4.52-3.13 8.74-6 9.88-2.87-1.14-6-5.36-6-9.88V7.18l6-3z"/>
+                    </svg>
+                    <span>LEED Gold</span>
+                </div>
+                <!-- Selo 2 -->
+                <div class="font-semibold text-xs sm:text-base text-neutral-700 tracking-tight flex items-center gap-1">
+                    <span class="w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full border-2 border-neutral-700"></span>
+                    <span>PBQP-H A</span>
+                </div>
+                <!-- Selo 3 -->
+                <div class="font-bold text-xs sm:text-base tracking-widest text-neutral-700 flex items-center gap-1">
+                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="currentColor">
+                        <polygon points="12 2 2 22 22 22"/>
+                    </svg>
+                    <span>GBC Brasil</span>
+                </div>
             </div>
         </div>
     </div>
-</section>
-
-<!-- Nossos Projetos Section -->
-<section id="portfolio" class="section-portfolio py-10 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto">
+</section>sm:py-20 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto">
     <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4 reveal">
         <div>
             <p class="text-xs uppercase tracking-widest text-neutral-400 font-semibold mb-2">Excelência em Execução</p>
