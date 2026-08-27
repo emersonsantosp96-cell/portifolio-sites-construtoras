@@ -122,11 +122,11 @@
                 width: 100%;
             }
         }
-        /* --- Mobile Section Reorder --- */
+        /* --- Mobile Section Reorder & Compact Spacing --- */
         @media (max-width: 767px) {
-            .section-sobre      { order: 1; }
-            .section-portfolio  { order: 2; }
-            .section-diferenciais { order: 3; }
+            .section-sobre      { order: 1; padding-top: 2.5rem !important; padding-bottom: 1rem !important; }
+            .section-portfolio  { order: 2; padding-top: 1rem !important; padding-bottom: 2.5rem !important; }
+            .section-diferenciais { order: 3; padding-top: 2.5rem !important; }
             .section-autoridade { order: 4; }
             .sections-wrapper   { display: flex; flex-direction: column; }
         }
@@ -164,7 +164,7 @@
 <body class="text-on-surface antialiased overflow-x-hidden" style="background-color: var(--site-bg);">
 
 <!-- Header & Navigation -->
-<header class="w-full pt-6 pb-3 px-4 sm:px-8 lg:px-12 sticky top-0 z-50 backdrop-blur-md border-b border-neutral-200/50 transition-all" style="background-color: rgba(251, 251, 252, 0.92);">
+<header class="w-full pt-3 sm:pt-6 pb-2.5 sm:pb-3 px-4 sm:px-8 lg:px-12 sticky top-0 z-50 backdrop-blur-md border-b border-neutral-200/50 transition-all" style="background-color: rgba(251, 251, 252, 0.92);">
     <nav class="max-w-[1360px] mx-auto flex items-center justify-between">
         <!-- Brand Logo -->
         <a href="#" class="font-headline text-2xl lg:text-3xl font-bold tracking-tight text-neutral-900 flex items-center gap-2">
